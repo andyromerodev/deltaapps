@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { fadeFromRight, fadeUp, staggerContainer, viewportOnce } from '../lib/animations'
+import { fadeFromRight, staggerContainer, viewportOnce } from '../lib/animations'
+import AnimatedSplitText from './AnimatedSplitText'
 
 export default function About() {
   const { t } = useLanguage()
@@ -8,10 +9,22 @@ export default function About() {
   return (
     <section id="about" className="border-y border-ink/10 bg-surface/50">
       <div className="mx-auto grid max-w-6xl scroll-mt-16 gap-12 px-6 py-24 md:grid-cols-2 md:items-center">
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-          <h2 className="font-display text-3xl font-bold md:text-5xl">{t.about.title}</h2>
-          <p className="mt-6 text-lg leading-relaxed text-ink/60">{t.about.text}</p>
-        </motion.div>
+        <div>
+          <AnimatedSplitText
+            as="h2"
+            text={t.about.title}
+            className="font-display text-3xl font-bold md:text-5xl"
+            inViewOptions={{ amount: 0.7, margin: '0px 0px -12%' }}
+          />
+          <AnimatedSplitText
+            as="p"
+            text={t.about.text}
+            delay={0.14}
+            stagger={0.038}
+            className="mt-6 text-lg leading-relaxed text-ink/60"
+            inViewOptions={{ amount: 0.6, margin: '0px 0px -10%' }}
+          />
+        </div>
 
         <motion.div
           variants={staggerContainer}

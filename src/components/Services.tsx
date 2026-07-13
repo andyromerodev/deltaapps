@@ -12,12 +12,11 @@ import {
 } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import {
-  fadeUp,
   interactionTransition,
   motionDuration,
   motionEase,
-  viewportOnce,
 } from '../lib/animations'
+import AnimatedSplitText from './AnimatedSplitText'
 
 const iconMap: Record<string, React.ElementType> = {
   design: Palette,
@@ -89,16 +88,22 @@ export default function Services() {
 
   return (
     <section id="services" className="mx-auto max-w-6xl scroll-mt-16 px-6 py-24">
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        className="max-w-2xl"
-      >
-        <h2 className="font-display text-3xl font-bold md:text-5xl">{t.services.title}</h2>
-        <p className="mt-4 text-lg text-ink/60">{t.services.subtitle}</p>
-      </motion.div>
+      <div className="max-w-2xl">
+        <AnimatedSplitText
+          as="h2"
+          text={t.services.title}
+          className="font-display text-3xl font-bold md:text-5xl"
+          inViewOptions={{ amount: 0.8, margin: '0px 0px -14%' }}
+        />
+        <AnimatedSplitText
+          as="p"
+          text={t.services.subtitle}
+          delay={0.12}
+          stagger={0.05}
+          className="mt-4 text-lg text-ink/60"
+          inViewOptions={{ amount: 0.75, margin: '0px 0px -14%' }}
+        />
+      </div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
         {t.services.items.map((service) => {
