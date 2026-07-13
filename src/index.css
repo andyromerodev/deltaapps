@@ -19,6 +19,12 @@
   --da-base: #0a0a0f;
   --da-surface: #12121a;
   --da-ink: #ffffff;
+  --motion-instant: 120ms;
+  --motion-state: 220ms;
+  --motion-reveal: 520ms;
+  --motion-hero: 760ms;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: dark;
 }
 
@@ -36,7 +42,9 @@ html {
 
 body {
   @apply bg-base font-sans text-ink antialiased;
-  transition: background-color 300ms ease, color 300ms ease;
+  transition:
+    background-color var(--motion-state) var(--ease-out-quart),
+    color var(--motion-state) var(--ease-out-quart);
 }
 
 @keyframes marquee {
@@ -45,8 +53,53 @@ body {
   }
 }
 
-.animate-marquee {
+.marquee-track {
+  display: flex;
+  width: max-content;
   animation: marquee 28s linear infinite;
+}
+
+.marquee-set {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.marquee-shell:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.service-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.service-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    22rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    color-mix(in oklch, var(--color-primary) 16%, transparent),
+    transparent 68%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-state) var(--ease-out-quart);
+}
+
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover::before {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,7 +107,38 @@ body {
     scroll-behavior: auto;
   }
 
-  .animate-marquee {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-shell {
+    mask-image: none;
+  }
+
+  .marquee-track {
     animation: none;
+    width: 100%;
+  }
+
+  .marquee-set {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 1.5rem;
+    row-gap: 0.75rem;
+    padding-inline: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .marquee-set-duplicate {
+    display: none;
+  }
+
+  .service-card::before {
+    opacity: 0 !important;
   }
 }

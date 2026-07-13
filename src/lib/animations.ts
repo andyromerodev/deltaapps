@@ -32,6 +32,15 @@ export const fadeSoft: Variants = {
   },
 }
 
+export const fadeFromRight: Variants = {
+  hidden: { opacity: 0, x: 18 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: motionDuration.reveal, ease: motionEase.outExpo },
+  },
+}
+
 export const staggerContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.07, delayChildren: 0.04 } },
