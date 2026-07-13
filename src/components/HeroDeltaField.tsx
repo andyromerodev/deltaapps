@@ -65,7 +65,7 @@ export default function HeroDeltaField({ scrollProgress }: HeroDeltaFieldProps) 
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      <div className="absolute right-[-11rem] top-1/2 size-[34rem] -translate-y-1/2 sm:right-[-13rem] sm:size-[42rem] lg:right-[max(-7rem,calc((100vw-72rem)/2-8rem))] lg:size-[46rem]">
+      <div className="absolute right-[-19rem] top-[14rem] size-[34rem] -translate-y-1/2 opacity-30 sm:right-[-13rem] sm:top-1/2 sm:size-[42rem] sm:opacity-70 lg:right-[max(-7rem,calc((100vw-72rem)/2-8rem))] lg:size-[46rem] lg:opacity-100">
         <motion.div
           style={reducedMotion ? undefined : { y: scrollY, scale: scrollScale, opacity: scrollOpacity }}
           className="size-full"
@@ -74,7 +74,7 @@ export default function HeroDeltaField({ scrollProgress }: HeroDeltaFieldProps) 
             style={reducedMotion ? undefined : { x: springX, y: springY }}
             className="relative size-full"
           >
-            <div className="absolute inset-[18%] rounded-full bg-primary/12 blur-3xl" />
+            <div className="absolute inset-[18%] rounded-full bg-primary/12 opacity-50 blur-3xl sm:opacity-100" />
             <svg viewBox="0 0 620 560" className="relative size-full overflow-visible">
               <g fill="none" strokeLinecap="round" strokeLinejoin="round">
                 {outlines.map((path, index) => (
@@ -91,7 +91,7 @@ export default function HeroDeltaField({ scrollProgress }: HeroDeltaFieldProps) 
                       },
                       opacity: { duration: motionDuration.state, delay: index * 0.08 },
                     }}
-                    className={index === 0 ? 'stroke-primary' : 'stroke-accent'}
+                    className={index === 0 ? 'stroke-primary' : 'hidden stroke-accent sm:block'}
                     strokeWidth={index === 0 ? 2.5 : 1.5}
                     vectorEffect="non-scaling-stroke"
                   />
@@ -111,7 +111,7 @@ export default function HeroDeltaField({ scrollProgress }: HeroDeltaFieldProps) 
                       },
                       opacity: { duration: motionDuration.state, delay: 0.16 + index * 0.04 },
                     }}
-                    className="stroke-ink"
+                    className="hidden stroke-ink sm:block"
                     strokeWidth="1"
                     strokeDasharray={index > 2 ? '5 9' : undefined}
                     vectorEffect="non-scaling-stroke"
@@ -132,7 +132,9 @@ export default function HeroDeltaField({ scrollProgress }: HeroDeltaFieldProps) 
                     delay: 0.28 + index * 0.05,
                     ease: motionEase.outExpo,
                   }}
-                  className={index % 2 === 0 ? 'fill-accent' : 'fill-primary'}
+                  className={`${index > 2 ? 'hidden sm:block ' : ''}${
+                    index % 2 === 0 ? 'fill-accent' : 'fill-primary'
+                  }`}
                   style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                 />
               ))}
