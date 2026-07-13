@@ -11,7 +11,7 @@ import {
 } from '../lib/animations'
 
 // Cambiar por el correo real de la empresa
-const CONTACT_EMAIL = 'hola@deltaapps.dev'
+const CONTACT_EMAIL = 'andyromerodev@gmail.com'
 
 const inputClasses =
   'w-full rounded-xl border border-ink/10 bg-surface px-4 py-3 text-ink placeholder:text-ink/30 outline-none transition-[background-color,border-color,box-shadow] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:border-ink/20 focus:border-primary focus:shadow-[0_0_0_3px_color-mix(in_oklch,var(--color-primary)_18%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
