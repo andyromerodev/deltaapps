@@ -28,7 +28,7 @@ export default function Footer() {
               key={label}
               href={href}
               aria-label={label}
-              className="flex size-10 items-center justify-center rounded-full border border-ink/10 text-sm font-semibold text-ink/60 transition-all duration-200 hover:-translate-y-1 hover:border-accent/50 hover:text-accent"
+              className="flex size-10 items-center justify-center rounded-full border border-ink/10 text-sm font-semibold text-ink/60 transition-[border-color,color,transform] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:-translate-y-1 hover:border-accent/50 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {abbr}
             </a>

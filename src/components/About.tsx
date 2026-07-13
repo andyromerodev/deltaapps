@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { useLanguage } from '../i18n/LanguageContext'
-import { fadeUp, staggerContainer, viewportOnce } from '../lib/animations'
+import { fadeFromRight, fadeUp, staggerContainer, viewportOnce } from '../lib/animations'
 
 export default function About() {
   const { t } = useLanguage()
@@ -23,7 +23,7 @@ export default function About() {
           {t.about.stats.map((stat) => (
             <motion.div
               key={stat.label}
-              variants={fadeUp}
+              variants={fadeFromRight}
               className="rounded-2xl border border-ink/10 bg-base p-6"
             >
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text font-display text-3xl font-bold text-transparent">
