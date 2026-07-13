@@ -1,3 +1,4 @@
+import { Route, Routes, Outlet } from 'react-router-dom'
 import { MotionConfig } from 'motion/react'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { ThemeProvider } from './theme/ThemeContext'
@@ -10,6 +11,33 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'
+import BlogSection from './blog/ui/BlogSection'
+import BlogPage from './blog/ui/BlogPage'
+import BlogPostPage from './blog/ui/BlogPostPage'
+
+function Layout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+      <WhatsAppFloatingButton />
+    </>
+  )
+}
+
+function LandingPage() {
+  return (
+    <main>
+      <Hero />
+      <Marquee />
+      <Services />
+      <About />
+      <BlogSection />
+      <Contact />
+    </main>
+  )
+}
 
 function App() {
   return (
@@ -17,16 +45,13 @@ function App() {
       <ThemeProvider>
         <SoundProvider>
           <LanguageProvider>
-            <Navbar />
-            <main>
-              <Hero />
-              <Marquee />
-              <Services />
-              <About />
-              <Contact />
-            </main>
-            <Footer />
-            <WhatsAppFloatingButton />
+            <Routes>
+              <Route element={<Layout />}>
+                <Route index element={<LandingPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<BlogPostPage />} />
+              </Route>
+            </Routes>
           </LanguageProvider>
         </SoundProvider>
       </ThemeProvider>

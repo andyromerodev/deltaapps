@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   AnimatePresence,
   motion,
@@ -54,8 +55,8 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="flex items-center gap-2.5 font-display font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         >
           <motion.span
@@ -66,7 +67,7 @@ export default function Navbar() {
             <LogoMark className="size-7" />
           </motion.span>
           <span className="text-[1rem] tracking-[0.18em]">DELTA APPS</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
@@ -79,6 +80,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/blog"
+            data-cuelume-hover="tick"
+            className="relative py-2 text-sm text-ink/60 transition-colors [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:[transition-duration:var(--motion-state)] after:[transition-timing-function:var(--ease-out-quart)] hover:text-ink hover:after:scale-x-100 focus-visible:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent focus-visible:after:scale-x-100"
+          >
+            {t.nav.blog}
+          </Link>
         </div>
 
         <div className="flex items-center gap-3">
@@ -200,6 +208,14 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <Link
+                to="/blog"
+                onClick={() => setMenuOpen(false)}
+                data-cuelume-hover="tick"
+                className="rounded-lg px-3 py-2 text-ink/70 transition-[background-color,color] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:bg-ink/5 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                {t.nav.blog}
+              </Link>
             </div>
           </motion.div>
         )}
