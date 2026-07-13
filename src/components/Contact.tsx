@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion, type Variants } from 'motion/react'
 import { Send } from 'lucide-react'
 import { play } from 'cuelume'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -9,6 +9,7 @@ import {
   interactionTransition,
   viewportOnce,
 } from '../lib/animations'
+import AnimatedSplitText from './AnimatedSplitText'
 
 // Cambiar por el correo real de la empresa
 const CONTACT_EMAIL = 'andyromerodev@gmail.com'
@@ -16,8 +17,32 @@ const CONTACT_EMAIL = 'andyromerodev@gmail.com'
 const inputClasses =
   'w-full rounded-xl border border-ink/10 bg-surface px-4 py-3 text-ink placeholder:text-ink/30 outline-none transition-[background-color,border-color,box-shadow] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:border-ink/20 focus:border-primary focus:shadow-[0_0_0_3px_color-mix(in_oklch,var(--color-primary)_18%,transparent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
 
+const formGroupReveal: Variants = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.52,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
+
+const formStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.08,
+    },
+  },
+}
+
 export default function Contact() {
   const { t } = useLanguage()
+  const reducedMotion = Boolean(useReducedMotion())
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -44,16 +69,35 @@ export default function Contact() {
         viewport={viewportOnce}
         className="relative mx-auto max-w-2xl px-6 py-24"
       >
-        <h2 className="text-center font-display text-3xl font-bold md:text-5xl">
-          {t.contact.title}
-        </h2>
-        <p className="mt-4 text-center text-lg text-ink/60">
-          {t.contact.subtitle}
-        </p>
+        <AnimatedSplitText
+          as="h2"
+          text={t.contact.title}
+          className="text-center font-display text-3xl font-bold md:text-5xl"
+          inViewOptions={{ amount: 0.72, margin: '0px 0px -12%' }}
+        />
+        <AnimatedSplitText
+          as="p"
+          text={t.contact.subtitle}
+          delay={0.12}
+          stagger={0.05}
+          className="mt-4 text-center text-lg text-ink/60"
+          inViewOptions={{ amount: 0.68, margin: '0px 0px -12%' }}
+        />
 
-        <form onSubmit={handleSubmit} className="mt-12 flex flex-col gap-5">
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink">
+        <motion.form
+          onSubmit={handleSubmit}
+          variants={formStagger}
+          initial={reducedMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.34, margin: '0px 0px -12%' }}
+          className="contact-form-shell mt-12 flex flex-col gap-5 rounded-[2rem] border border-ink/10 bg-surface/80 p-6 backdrop-blur-sm sm:p-8"
+        >
+          <motion.div variants={formGroupReveal} className="grid gap-5 sm:grid-cols-2">
+            <motion.label
+              variants={formGroupReveal}
+              whileHover={reducedMotion ? undefined : { y: -1 }}
+              className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink"
+            >
               {t.contact.name}
               <input
                 type="text"
@@ -63,8 +107,12 @@ export default function Contact() {
                 placeholder={t.contact.namePlaceholder}
                 className={inputClasses}
               />
-            </label>
-            <label className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink">
+            </motion.label>
+            <motion.label
+              variants={formGroupReveal}
+              whileHover={reducedMotion ? undefined : { y: -1 }}
+              className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink"
+            >
               {t.contact.email}
               <input
                 type="email"
@@ -74,9 +122,13 @@ export default function Contact() {
                 placeholder={t.contact.emailPlaceholder}
                 className={inputClasses}
               />
-            </label>
-          </div>
-          <label className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink">
+            </motion.label>
+          </motion.div>
+          <motion.label
+            variants={formGroupReveal}
+            whileHover={reducedMotion ? undefined : { y: -1 }}
+            className="flex flex-col gap-2 text-sm text-ink/70 transition-colors [transition-duration:var(--motion-state)] focus-within:text-ink"
+          >
             {t.contact.message}
             <textarea
               required
@@ -86,11 +138,12 @@ export default function Contact() {
               placeholder={t.contact.messagePlaceholder}
               className={`${inputClasses} resize-none`}
             />
-          </label>
+          </motion.label>
           <motion.button
+            variants={formGroupReveal}
             type="submit"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={reducedMotion ? undefined : { y: -2 }}
+            whileTap={reducedMotion ? undefined : { scale: 0.98 }}
             transition={interactionTransition}
             data-cuelume-press
             className="group mt-2 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 font-medium text-white shadow-lg shadow-primary/30 transition-[box-shadow] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:shadow-primary/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
@@ -98,7 +151,7 @@ export default function Contact() {
             {t.contact.submit}
             <Send className="size-4 transition-transform [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] group-hover:translate-x-1 group-hover:-translate-y-1" />
           </motion.button>
-        </form>
+        </motion.form>
       </motion.div>
     </section>
   )
