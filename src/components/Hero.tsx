@@ -8,6 +8,7 @@ import {
   motionDuration,
   motionEase,
 } from '../lib/animations'
+import AnimatedSplitText from './AnimatedSplitText'
 import HeroDeltaField from './HeroDeltaField'
 
 const valuePropIcons = [Palette, Megaphone, Search, Shield]
@@ -31,9 +32,36 @@ const heroItem: Variants = {
   },
 }
 
+const heroTitle: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.085,
+      delayChildren: 0.18,
+    },
+  },
+}
+
+const heroTitleWord: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: motionDuration.reveal,
+      ease: motionEase.outExpo,
+    },
+  },
+}
+
 export default function Hero() {
   const { lang, t } = useLanguage()
-  const reducedMotion = useReducedMotion()
+  const reducedMotion = Boolean(useReducedMotion())
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -68,12 +96,13 @@ export default function Hero() {
         </motion.span>
 
         <motion.h1
-          variants={heroItem}
+          variants={heroTitle}
           className="mt-6 max-w-3xl font-display text-5xl font-bold leading-tight md:text-7xl"
         >
           {words.map((word, index) => (
-            <span
+            <motion.span
               key={`${word}-${index}`}
+              variants={heroTitleWord}
               className={`mr-[0.25em] inline-block ${
                 index >= gradientFrom
                   ? 'bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'
@@ -81,13 +110,19 @@ export default function Hero() {
               }`}
             >
               {word}
-            </span>
+            </motion.span>
           ))}
         </motion.h1>
 
-        <motion.p variants={heroItem} className="mt-6 max-w-xl text-lg text-ink/60">
-          {t.hero.subtitle}
-        </motion.p>
+        <AnimatedSplitText
+          key={`${lang}-hero-subtitle`}
+          as="p"
+          text={t.hero.subtitle}
+          delay={0.18}
+          stagger={0.052}
+          className="mt-6 max-w-xl text-lg text-ink/60"
+          inViewOptions={{ amount: 0.7, margin: '0px 0px -12%' }}
+        />
 
         <motion.ul
           variants={heroItem}
