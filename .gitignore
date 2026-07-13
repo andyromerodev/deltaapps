@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright
+.playwright-cli/
+
+# Dev output
+output/
