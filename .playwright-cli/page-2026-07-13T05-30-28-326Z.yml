@@ -1,0 +1,156 @@
+- generic [ref=f3e2]:
+  - banner [ref=f3e3]:
+    - navigation [ref=f3e4]:
+      - link "DELTA APPS" [ref=f3e5] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=f3e12]:
+        - link "Servicios" [ref=f3e13] [cursor=pointer]:
+          - /url: "#services"
+        - link "Nosotros" [ref=f3e14] [cursor=pointer]:
+          - /url: "#about"
+        - link "Contacto" [ref=f3e15] [cursor=pointer]:
+          - /url: "#contact"
+      - generic [ref=f3e16]:
+        - button "Activar/desactivar sonido" [ref=f3e17]
+        - button "Cambiar tema" [ref=f3e23]
+        - generic [ref=f3e27]:
+          - button "es" [ref=f3e28]
+          - button "en" [ref=f3e29]
+        - link "Hablemos" [ref=f3e30] [cursor=pointer]:
+          - /url: "#contact"
+  - main [ref=f3e32]:
+    - generic [ref=f3e34]:
+      - generic [ref=f3e35]: Diseño · Marketing · Software
+      - heading "Llevamos tu idea al siguiente nivel" [level=1] [ref=f3e36]:
+        - generic [ref=f3e37]: Llevamos
+        - generic [ref=f3e38]: tu
+        - generic [ref=f3e39]: idea
+        - generic [ref=f3e40]: al
+        - generic [ref=f3e41]: siguiente
+        - generic [ref=f3e42]: nivel
+      - paragraph [ref=f3e43]: "Somos DeltaApps: diseñamos marcas memorables, creamos estrategias de marketing que conectan y desarrollamos software que impulsa tu negocio."
+      - list "Qué hacemos" [ref=f3e44]:
+        - listitem [ref=f3e45]:
+          - generic [ref=f3e46]: Diseñamos tu presencia digital
+        - listitem [ref=f3e53]:
+          - generic [ref=f3e54]: Promovemos tu sitio
+        - listitem [ref=f3e58]:
+          - generic [ref=f3e59]: SEO para aparecer en búsquedas
+        - listitem [ref=f3e63]:
+          - generic [ref=f3e64]: Monitoreamos la seguridad
+      - generic [ref=f3e67]:
+        - link "Inicia tu proyecto" [ref=f3e68] [cursor=pointer]:
+          - /url: "#contact"
+        - link "Ver servicios" [ref=f3e71] [cursor=pointer]:
+          - /url: "#services"
+    - generic [ref=f3e73]:
+      - generic [ref=f3e74]:
+        - generic [ref=f3e75]: Identidad de marca
+        - generic [ref=f3e76]: Δ
+      - generic [ref=f3e77]:
+        - generic [ref=f3e78]: UI/UX
+        - generic [ref=f3e79]: Δ
+      - generic [ref=f3e80]:
+        - generic [ref=f3e81]: Sitios web
+        - generic [ref=f3e82]: Δ
+      - generic [ref=f3e83]:
+        - generic [ref=f3e84]: Apps móviles
+        - generic [ref=f3e85]: Δ
+      - generic [ref=f3e86]:
+        - generic [ref=f3e87]: SEO
+        - generic [ref=f3e88]: Δ
+      - generic [ref=f3e89]:
+        - generic [ref=f3e90]: Redes sociales
+        - generic [ref=f3e91]: Δ
+      - generic [ref=f3e92]:
+        - generic [ref=f3e93]: E-commerce
+        - generic [ref=f3e94]: Δ
+      - generic [ref=f3e95]:
+        - generic [ref=f3e96]: Sistemas a medida
+        - generic [ref=f3e97]: Δ
+      - generic [ref=f3e98]:
+        - generic [ref=f3e99]: Identidad de marca
+        - generic [ref=f3e100]: Δ
+      - generic [ref=f3e101]:
+        - generic [ref=f3e102]: UI/UX
+        - generic [ref=f3e103]: Δ
+      - generic [ref=f3e104]:
+        - generic [ref=f3e105]: Sitios web
+        - generic [ref=f3e106]: Δ
+      - generic [ref=f3e107]:
+        - generic [ref=f3e108]: Apps móviles
+        - generic [ref=f3e109]: Δ
+      - generic [ref=f3e110]:
+        - generic [ref=f3e111]: SEO
+        - generic [ref=f3e112]: Δ
+      - generic [ref=f3e113]:
+        - generic [ref=f3e114]: Redes sociales
+        - generic [ref=f3e115]: Δ
+      - generic [ref=f3e116]:
+        - generic [ref=f3e117]: E-commerce
+        - generic [ref=f3e118]: Δ
+      - generic [ref=f3e119]:
+        - generic [ref=f3e120]: Sistemas a medida
+        - generic [ref=f3e121]: Δ
+    - generic [ref=f3e122]:
+      - generic [ref=f3e123]:
+        - heading "Lo que hacemos" [level=2] [ref=f3e124]
+        - paragraph [ref=f3e125]: "Tres disciplinas, un mismo objetivo: hacer crecer tu negocio."
+      - generic [ref=f3e126]:
+        - article [ref=f3e127]:
+          - heading "Diseño" [level=3] [ref=f3e135]
+          - paragraph [ref=f3e136]: Identidad de marca, UI/UX y diseño gráfico que hacen que tu empresa se vea tan bien como funciona.
+        - article [ref=f3e137]:
+          - heading "Marketing" [level=3] [ref=f3e142]
+          - paragraph [ref=f3e143]: Estrategias digitales, redes sociales y campañas que llevan tu mensaje a las personas correctas.
+        - article [ref=f3e144]:
+          - heading "Desarrollo de software" [level=3] [ref=f3e150]
+          - paragraph [ref=f3e151]: Sitios web, apps móviles y sistemas a medida construidos con tecnología moderna y escalable.
+    - generic [ref=f3e153]:
+      - generic [ref=f3e154]:
+        - heading "Sobre nosotros" [level=2] [ref=f3e155]
+        - paragraph [ref=f3e156]: DeltaApps nace de la convicción de que las pequeñas y medianas empresas merecen diseño, marketing y tecnología de primer nivel. Combinamos creatividad y código para entregar soluciones completas, sin intermediarios y a tu medida.
+      - generic [ref=f3e157]:
+        - generic [ref=f3e158]:
+          - text: 3 en 1
+          - paragraph [ref=f3e159]: Diseño, marketing y desarrollo bajo un mismo techo
+        - generic [ref=f3e160]:
+          - text: 100%
+          - paragraph [ref=f3e161]: Proyectos a la medida de cada cliente
+        - generic [ref=f3e162]:
+          - text: Δ
+          - paragraph [ref=f3e163]: El cambio que tu negocio necesita
+    - generic [ref=f3e165]:
+      - heading "¿Listo para empezar?" [level=2] [ref=f3e166]
+      - paragraph [ref=f3e167]: Cuéntanos tu idea y te responderemos en menos de 24 horas.
+      - generic [ref=f3e168]:
+        - generic [ref=f3e169]:
+          - generic [ref=f3e170]:
+            - text: Nombre
+            - textbox "Nombre" [ref=f3e171]:
+              - /placeholder: Tu nombre
+          - generic [ref=f3e172]:
+            - text: Correo electrónico
+            - textbox "Correo electrónico" [ref=f3e173]:
+              - /placeholder: tu@correo.com
+        - generic [ref=f3e174]:
+          - text: Mensaje
+          - textbox "Mensaje" [ref=f3e175]:
+            - /placeholder: Cuéntanos sobre tu proyecto…
+        - button "Enviar mensaje" [ref=f3e176]
+  - contentinfo [ref=f3e180]:
+    - generic [ref=f3e181]:
+      - generic [ref=f3e182]:
+        - paragraph [ref=f3e183]: DELTA APPS
+        - paragraph [ref=f3e188]: Diseño, marketing y software para hacer crecer tu negocio.
+      - generic [ref=f3e189]:
+        - link "Instagram" [ref=f3e190] [cursor=pointer]:
+          - /url: "#"
+          - text: IG
+        - link "LinkedIn" [ref=f3e191] [cursor=pointer]:
+          - /url: "#"
+          - text: in
+        - link "GitHub" [ref=f3e192] [cursor=pointer]:
+          - /url: "#"
+          - text: GH
+    - paragraph [ref=f3e193]: © 2026 DeltaApps. Todos los derechos reservados.

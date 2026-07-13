@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7c3aed;
+  --color-accent: #22d3ee;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Tokens semánticos que cambian con el tema (.light en <html>) */
+@theme inline {
+  --color-base: var(--da-base);
+  --color-surface: var(--da-surface);
+  --color-ink: var(--da-ink);
+}
+
+:root {
+  --da-base: #0a0a0f;
+  --da-surface: #12121a;
+  --da-ink: #ffffff;
+  color-scheme: dark;
+}
+
+:root.light {
+  --da-base: #f5f6fa;
+  --da-surface: #ffffff;
+  /* Azul marino del logo DeltaApps */
+  --da-ink: #16305e;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-base font-sans text-ink antialiased;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+}

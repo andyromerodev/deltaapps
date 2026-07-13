@@ -1,0 +1,149 @@
+- generic [ref=f1e2]:
+  - banner [ref=f1e3]:
+    - navigation [ref=f1e4]:
+      - link "DELTA APPS" [ref=f1e5] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=f1e12]:
+        - button "Toggle sound" [ref=f1e13]
+        - button "Toggle theme" [ref=f1e19]
+        - generic [ref=f1e23]:
+          - button "es" [ref=f1e24]
+          - button "en" [ref=f1e25]
+        - button "Abrir menú" [ref=f1e26]
+  - main [ref=f1e28]:
+    - generic [ref=f1e30]:
+      - generic [ref=f1e31]: Design · Marketing · Software
+      - heading "Taking your idea to the next level" [level=1] [ref=f1e32]:
+        - generic [ref=f1e33]: Taking
+        - generic [ref=f1e34]: your
+        - generic [ref=f1e35]: idea
+        - generic [ref=f1e36]: to
+        - generic [ref=f1e37]: the
+        - generic [ref=f1e38]: next
+        - generic [ref=f1e39]: level
+      - paragraph [ref=f1e40]: "We are DeltaApps: we design memorable brands, craft marketing strategies that connect, and build software that powers your business."
+      - list "Qué hacemos" [ref=f1e41]:
+        - listitem [ref=f1e42]:
+          - generic [ref=f1e43]: We design your digital presence
+        - listitem [ref=f1e50]:
+          - generic [ref=f1e51]: We promote your site
+        - listitem [ref=f1e55]:
+          - generic [ref=f1e56]: SEO to rank in search results
+        - listitem [ref=f1e60]:
+          - generic [ref=f1e61]: We monitor your security
+      - generic [ref=f1e64]:
+        - link "Start your project" [ref=f1e65] [cursor=pointer]:
+          - /url: "#contact"
+        - link "See services" [ref=f1e68] [cursor=pointer]:
+          - /url: "#services"
+    - generic [ref=f1e70]:
+      - generic [ref=f1e71]:
+        - generic [ref=f1e72]: Brand identity
+        - generic [ref=f1e73]: Δ
+      - generic [ref=f1e74]:
+        - generic [ref=f1e75]: UI/UX
+        - generic [ref=f1e76]: Δ
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]: Websites
+        - generic [ref=f1e79]: Δ
+      - generic [ref=f1e80]:
+        - generic [ref=f1e81]: Mobile apps
+        - generic [ref=f1e82]: Δ
+      - generic [ref=f1e83]:
+        - generic [ref=f1e84]: SEO
+        - generic [ref=f1e85]: Δ
+      - generic [ref=f1e86]:
+        - generic [ref=f1e87]: Social media
+        - generic [ref=f1e88]: Δ
+      - generic [ref=f1e89]:
+        - generic [ref=f1e90]: E-commerce
+        - generic [ref=f1e91]: Δ
+      - generic [ref=f1e92]:
+        - generic [ref=f1e93]: Custom systems
+        - generic [ref=f1e94]: Δ
+      - generic [ref=f1e95]:
+        - generic [ref=f1e96]: Brand identity
+        - generic [ref=f1e97]: Δ
+      - generic [ref=f1e98]:
+        - generic [ref=f1e99]: UI/UX
+        - generic [ref=f1e100]: Δ
+      - generic [ref=f1e101]:
+        - generic [ref=f1e102]: Websites
+        - generic [ref=f1e103]: Δ
+      - generic [ref=f1e104]:
+        - generic [ref=f1e105]: Mobile apps
+        - generic [ref=f1e106]: Δ
+      - generic [ref=f1e107]:
+        - generic [ref=f1e108]: SEO
+        - generic [ref=f1e109]: Δ
+      - generic [ref=f1e110]:
+        - generic [ref=f1e111]: Social media
+        - generic [ref=f1e112]: Δ
+      - generic [ref=f1e113]:
+        - generic [ref=f1e114]: E-commerce
+        - generic [ref=f1e115]: Δ
+      - generic [ref=f1e116]:
+        - generic [ref=f1e117]: Custom systems
+        - generic [ref=f1e118]: Δ
+    - generic [ref=f1e119]:
+      - generic [ref=f1e120]:
+        - heading "What we do" [level=2] [ref=f1e121]
+        - paragraph [ref=f1e122]: "Three disciplines, one goal: growing your business."
+      - generic [ref=f1e123]:
+        - article [ref=f1e124]:
+          - heading "Design" [level=3] [ref=f1e132]
+          - paragraph [ref=f1e133]: Brand identity, UI/UX, and graphic design that make your company look as good as it works.
+        - article [ref=f1e134]:
+          - heading "Marketing" [level=3] [ref=f1e139]
+          - paragraph [ref=f1e140]: Digital strategies, social media, and campaigns that carry your message to the right people.
+        - article [ref=f1e141]:
+          - heading "Software development" [level=3] [ref=f1e147]
+          - paragraph [ref=f1e148]: Websites, mobile apps, and custom systems built with modern, scalable technology.
+    - generic [ref=f1e150]:
+      - generic [ref=f1e151]:
+        - heading "About us" [level=2] [ref=f1e152]
+        - paragraph [ref=f1e153]: DeltaApps was born from the conviction that small and medium businesses deserve first-class design, marketing, and technology. We blend creativity and code to deliver complete solutions — no middlemen, tailored to you.
+      - generic [ref=f1e154]:
+        - generic [ref=f1e155]:
+          - text: 3 in 1
+          - paragraph [ref=f1e156]: Design, marketing, and development under one roof
+        - generic [ref=f1e157]:
+          - text: 100%
+          - paragraph [ref=f1e158]: Projects tailored to every client
+        - generic [ref=f1e159]:
+          - text: Δ
+          - paragraph [ref=f1e160]: The change your business needs
+    - generic [ref=f1e162]:
+      - heading "Ready to get started?" [level=2] [ref=f1e163]
+      - paragraph [ref=f1e164]: Tell us your idea and we'll get back to you within 24 hours.
+      - generic [ref=f1e165]:
+        - generic [ref=f1e166]:
+          - generic [ref=f1e167]:
+            - text: Name
+            - textbox "Name" [ref=f1e168]:
+              - /placeholder: Your name
+          - generic [ref=f1e169]:
+            - text: Email
+            - textbox "Email" [ref=f1e170]:
+              - /placeholder: you@email.com
+        - generic [ref=f1e171]:
+          - text: Message
+          - textbox "Message" [ref=f1e172]:
+            - /placeholder: Tell us about your project…
+        - button "Send message" [ref=f1e173]
+  - contentinfo [ref=f1e177]:
+    - generic [ref=f1e178]:
+      - generic [ref=f1e179]:
+        - paragraph [ref=f1e180]: DELTA APPS
+        - paragraph [ref=f1e185]: Design, marketing, and software to grow your business.
+      - generic [ref=f1e186]:
+        - link "Instagram" [ref=f1e187] [cursor=pointer]:
+          - /url: "#"
+          - text: IG
+        - link "LinkedIn" [ref=f1e188] [cursor=pointer]:
+          - /url: "#"
+          - text: in
+        - link "GitHub" [ref=f1e189] [cursor=pointer]:
+          - /url: "#"
+          - text: GH
+    - paragraph [ref=f1e190]: © 2026 DeltaApps. All rights reserved.
