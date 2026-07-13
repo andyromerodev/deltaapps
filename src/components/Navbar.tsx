@@ -3,6 +3,7 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
+  useReducedMotion,
   useScroll,
   useSpring,
 } from 'motion/react'
@@ -11,14 +12,23 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { useTheme } from '../theme/ThemeContext'
 import { useSound } from '../sound/SoundContext'
 import type { Language } from '../i18n/translations'
+import {
+  interactionTransition,
+  motionDuration,
+  motionEase,
+} from '../lib/animations'
 import LogoMark from './Logo'
 
 const LANGS: Language[] = ['es', 'en']
+
+const iconButtonClasses =
+  'flex size-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-[background-color,border-color,color] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:border-ink/30 hover:bg-ink/5 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage()
   const { theme, toggleTheme } = useTheme()
   const { soundOn, toggleSound } = useSound()
+  const reducedMotion = useReducedMotion()
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -34,20 +44,23 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -24, opacity: 0 }}
+      initial={reducedMotion ? false : { y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300 ${
+      transition={{ duration: motionDuration.reveal, ease: motionEase.outExpo }}
+      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-[background-color,border-color,box-shadow] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] ${
         scrolled
           ? 'border-ink/15 bg-base/90 shadow-lg shadow-black/20'
           : 'border-ink/10 bg-base/70'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#" className="flex items-center gap-2.5 font-display font-bold">
+        <a
+          href="#"
+          className="flex items-center gap-2.5 font-display font-bold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
           <motion.span
-            whileHover={{ rotate: 180 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={reducedMotion ? undefined : { y: -1, rotate: -3, scale: 1.04 }}
+            transition={interactionTransition}
             className="inline-flex"
           >
             <LogoMark className="size-7" />
@@ -61,7 +74,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               data-cuelume-hover="tick"
-              className="text-sm text-ink/60 transition-colors hover:text-ink"
+              className="relative py-2 text-sm text-ink/60 transition-colors [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:[transition-duration:var(--motion-state)] after:[transition-timing-function:var(--ease-out-quart)] hover:text-ink hover:after:scale-x-100 focus-visible:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent focus-visible:after:scale-x-100"
             >
               {link.label}
             </a>
@@ -74,15 +87,15 @@ export default function Navbar() {
             data-cuelume-toggle
             aria-label={t.nav.soundToggle}
             aria-pressed={soundOn}
-            className="flex size-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-colors hover:border-ink/30 hover:text-ink"
+            className={iconButtonClasses}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={soundOn ? 'on' : 'off'}
-                initial={{ scale: 0.6, opacity: 0 }}
+                initial={reducedMotion ? false : { scale: 0.7, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.6, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                exit={reducedMotion ? undefined : { scale: 0.8, opacity: 0 }}
+                transition={{ duration: motionDuration.instant, ease: motionEase.outQuart }}
                 className="inline-flex"
               >
                 {soundOn ? <Volume2 className="size-4" /> : <VolumeX className="size-4" />}
@@ -93,50 +106,72 @@ export default function Navbar() {
             onClick={toggleTheme}
             data-cuelume-toggle
             aria-label={t.nav.themeToggle}
-            className="flex size-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-colors hover:border-ink/30 hover:text-ink"
+            className={iconButtonClasses}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={theme}
-                initial={{ rotate: -90, opacity: 0 }}
+                initial={reducedMotion ? false : { rotate: -70, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                exit={reducedMotion ? undefined : { rotate: 50, opacity: 0 }}
+                transition={{ duration: motionDuration.instant, ease: motionEase.outQuart }}
                 className="inline-flex"
               >
                 {theme === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
               </motion.span>
             </AnimatePresence>
           </button>
-          <div className="flex overflow-hidden rounded-full border border-ink/15 text-xs font-medium">
+          <div className="relative flex rounded-full border border-ink/15 p-0.5 text-xs font-medium">
             {LANGS.map((code) => (
               <button
                 key={code}
                 onClick={() => setLang(code)}
-                className={`px-3 py-1.5 uppercase transition-colors ${
-                  lang === code ? 'bg-ink/10 text-ink' : 'text-ink/50 hover:text-ink'
+                aria-pressed={lang === code}
+                className={`relative isolate rounded-full px-2.5 py-1 uppercase transition-colors [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                  lang === code ? 'text-ink' : 'text-ink/50 hover:text-ink'
                 }`}
               >
+                {lang === code && (
+                  <motion.span
+                    layoutId="active-language"
+                    transition={interactionTransition}
+                    className="absolute inset-0 -z-10 rounded-full bg-ink/10"
+                  />
+                )}
                 {code}
               </button>
             ))}
           </div>
-          <a
+          <motion.a
             href="#contact"
+            whileHover={reducedMotion ? undefined : { y: -1 }}
+            whileTap={reducedMotion ? undefined : { scale: 0.98 }}
+            transition={interactionTransition}
             data-cuelume-press
             data-cuelume-release
-            className="hidden rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1.5 text-sm font-medium text-white transition-transform hover:scale-105 sm:block"
+            className="hidden rounded-full bg-gradient-to-r from-primary to-accent px-4 py-1.5 text-sm font-medium text-white shadow-sm shadow-primary/20 transition-[box-shadow] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:shadow-md hover:shadow-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:block"
           >
             {t.nav.cta}
-          </a>
+          </motion.a>
           <button
             onClick={() => setMenuOpen((open) => !open)}
             data-cuelume-toggle
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={menuOpen}
-            className="flex size-9 items-center justify-center rounded-full border border-ink/15 text-ink/70 md:hidden"
+            className={`${iconButtonClasses} md:hidden`}
           >
-            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={menuOpen ? 'close' : 'open'}
+                initial={reducedMotion ? false : { opacity: 0, rotate: -45, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={reducedMotion ? undefined : { opacity: 0, rotate: 35, scale: 0.85 }}
+                transition={{ duration: motionDuration.instant, ease: motionEase.outQuart }}
+                className="inline-flex"
+              >
+                {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+              </motion.span>
+            </AnimatePresence>
           </button>
         </div>
       </nav>
@@ -144,11 +179,14 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="overflow-hidden border-t border-ink/10 md:hidden"
+            initial={reducedMotion ? false : { opacity: 0, y: -10, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={reducedMotion ? undefined : { opacity: 0, y: -7, scale: 0.99 }}
+            transition={{
+              duration: reducedMotion ? 0 : motionDuration.state,
+              ease: motionEase.outExpo,
+            }}
+            className="absolute inset-x-0 top-full origin-top border-t border-ink/10 bg-base shadow-lg shadow-black/10 md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-4">
               {links.map((link) => (
@@ -157,7 +195,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   data-cuelume-hover="tick"
-                  className="rounded-lg px-3 py-2 text-ink/70 transition-colors hover:bg-ink/5 hover:text-ink"
+                  className="rounded-lg px-3 py-2 text-ink/70 transition-[background-color,color] [transition-duration:var(--motion-state)] [transition-timing-function:var(--ease-out-quart)] hover:bg-ink/5 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   {link.label}
                 </a>
