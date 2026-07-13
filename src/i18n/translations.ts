@@ -35,22 +35,55 @@ export const translations = {
     services: {
       title: 'Lo que hacemos',
       subtitle:
-        'Tres disciplinas, un mismo objetivo: hacer crecer tu negocio.',
+        'Soluciones integrales, un mismo objetivo: hacer crecer tu negocio escalablemente.',
       items: [
         {
+          id: 'design',
           title: 'Diseño',
           description:
             'Identidad de marca, UI/UX y diseño gráfico que hacen que tu empresa se vea tan bien como funciona.',
         },
         {
+          id: 'marketing',
           title: 'Marketing',
           description:
             'Estrategias digitales, redes sociales y campañas que llevan tu mensaje a las personas correctas.',
         },
         {
+          id: 'software',
           title: 'Desarrollo de software',
           description:
             'Sitios web, apps móviles y sistemas a medida construidos con tecnología moderna y escalable.',
+        },
+        {
+          id: 'maintenance',
+          title: 'Soporte y Mantenimiento',
+          description:
+            'Gestión de servidores cloud, monitoreo de seguridad 24/7 y actualizaciones de plataforma para tu tranquilidad.',
+        },
+        {
+          id: 'consulting',
+          title: 'Consultoría y Automatización',
+          description:
+            'Integración de CRMs, flujos con IA y transformación digital para optimizar los procesos de tu empresa.',
+        },
+        {
+          id: 'seo',
+          title: 'SEO y Publicidad Digital',
+          description:
+            'Auditorías SEO, posicionamiento web y gestión de campañas en Google y Meta Ads para captar clientes.',
+        },
+        {
+          id: 'multimedia',
+          title: 'Contenido Multimedia',
+          description:
+            'Fotografía corporativa, videos cortos y copywriting que nutren tu marketing y atraen a tu audiencia.',
+        },
+        {
+          id: 'ecommerce',
+          title: 'E-commerce y CRO',
+          description:
+            'Desarrollo de tiendas online y optimización de la experiencia para maximizar tus ventas y conversiones.',
         },
       ],
     },
@@ -115,22 +148,55 @@ export const translations = {
     ],
     services: {
       title: 'What we do',
-      subtitle: 'Three disciplines, one goal: growing your business.',
+      subtitle: 'Comprehensive solutions, one goal: scaling your business.',
       items: [
         {
+          id: 'design',
           title: 'Design',
           description:
             'Brand identity, UI/UX, and graphic design that make your company look as good as it works.',
         },
         {
+          id: 'marketing',
           title: 'Marketing',
           description:
             'Digital strategies, social media, and campaigns that carry your message to the right people.',
         },
         {
+          id: 'software',
           title: 'Software development',
           description:
             'Websites, mobile apps, and custom systems built with modern, scalable technology.',
+        },
+        {
+          id: 'maintenance',
+          title: 'Support & Maintenance',
+          description:
+            'Cloud server management, 24/7 security monitoring, and platform updates for your peace of mind.',
+        },
+        {
+          id: 'consulting',
+          title: 'Consulting & Automation',
+          description:
+            'CRM integrations, AI-powered workflows, and digital transformation to optimize your company processes.',
+        },
+        {
+          id: 'seo',
+          title: 'SEO & Digital Advertising',
+          description:
+            'SEO audits, web positioning, and Google/Meta Ads campaign management to attract more clients.',
+        },
+        {
+          id: 'multimedia',
+          title: 'Multimedia Content',
+          description:
+            'Corporate photography, short-form videos, and copywriting that fuel your marketing and engage audiences.',
+        },
+        {
+          id: 'ecommerce',
+          title: 'E-commerce & CRO',
+          description:
+            'Online store development and experience optimization to maximize your sales and conversions.',
         },
       ],
     },

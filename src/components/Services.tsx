@@ -1,6 +1,15 @@
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { motion, useReducedMotion, type Variants } from 'motion/react'
-import { Palette, Megaphone, Code2 } from 'lucide-react'
+import {
+  Palette,
+  Megaphone,
+  Code2,
+  Server,
+  Lightbulb,
+  Search,
+  Video,
+  ShoppingCart,
+} from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import {
   fadeUp,
@@ -10,26 +19,64 @@ import {
   viewportOnce,
 } from '../lib/animations'
 
-const icons = [Palette, Megaphone, Code2]
-
-function cardReveal(index: number): Variants {
-  return {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: motionDuration.reveal,
-        delay: index * 0.07,
-        ease: motionEase.outExpo,
-      },
-    },
-  }
+const iconMap: Record<string, React.ElementType> = {
+  design: Palette,
+  marketing: Megaphone,
+  software: Code2,
+  maintenance: Server,
+  consulting: Lightbulb,
+  seo: Search,
+  multimedia: Video,
+  ecommerce: ShoppingCart,
 }
+
+const serviceCardReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+    scale: 0.965,
+    filter: 'blur(10px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: motionDuration.reveal,
+      ease: motionEase.outExpo,
+    },
+  },
+}
+
+const serviceCardStatic: Variants = {
+  hidden: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0,
+    },
+  },
+}
+
+function getServiceCardReveal(reducedMotion: boolean): Variants {
+  return reducedMotion ? serviceCardStatic : serviceCardReveal
+}
+
+const serviceCardViewport = { once: true, amount: 0.55, margin: '0px 0px -8%' } as const
 
 export default function Services() {
   const { t } = useLanguage()
-  const reducedMotion = useReducedMotion()
+  const reducedMotion = Boolean(useReducedMotion())
+  const cardReveal = getServiceCardReveal(reducedMotion)
 
   function handlePointerMove(event: ReactPointerEvent<HTMLElement>) {
     if (event.pointerType === 'touch') return
@@ -54,15 +101,16 @@ export default function Services() {
       </motion.div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {t.services.items.map((service, i) => {
-          const Icon = icons[i]
+        {t.services.items.map((service) => {
+          // Fallback to Palette if the id somehow doesn't exist, though it always should.
+          const Icon = iconMap[service.id] || Palette
           return (
             <motion.article
-              key={service.title}
-              variants={cardReveal(i)}
-              initial={reducedMotion ? false : 'hidden'}
+              key={service.id}
+              variants={cardReveal}
+              initial="hidden"
               whileInView="visible"
-              viewport={viewportOnce}
+              viewport={serviceCardViewport}
               whileHover={
                 reducedMotion
                   ? undefined
