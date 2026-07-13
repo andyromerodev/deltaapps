@@ -9,6 +9,7 @@ import Services from './components/Services'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Contact />
             </main>
             <Footer />
+            <WhatsAppFloatingButton />
           </LanguageProvider>
         </SoundProvider>
       </ThemeProvider>
