@@ -4,10 +4,15 @@ import type { BlogPost, BlogPostWithContent } from '../domain/BlogPost'
 
 interface MdxModule {
   default: ComponentType
-  title: string
-  date: string
-  excerpt: string
-  tags: string[]
+  frontmatter: {
+    title: string
+    date: string
+    excerpt: string
+    tags: string[]
+    seoTitle?: string
+    seoDescription?: string
+    ogImage?: string
+  }
 }
 
 const modules = import.meta.glob<MdxModule>('./posts/*.mdx')
@@ -21,12 +26,16 @@ export class MdxBlogRepository implements IBlogRepository {
     const posts = await Promise.all(
       Object.entries(modules).map(async ([path, load]) => {
         const mod = await load()
+        const fm = mod.frontmatter
         return {
           slug: slugFromPath(path),
-          title: mod.title,
-          date: mod.date,
-          excerpt: mod.excerpt,
-          tags: mod.tags ?? [],
+          title: fm.title,
+          date: fm.date,
+          excerpt: fm.excerpt,
+          tags: fm.tags ?? [],
+          seoTitle: fm.seoTitle,
+          seoDescription: fm.seoDescription,
+          ogImage: fm.ogImage,
         }
       })
     )
@@ -40,12 +49,16 @@ export class MdxBlogRepository implements IBlogRepository {
     const load = modules[path]
     if (!load) return null
     const mod = await load()
+    const fm = mod.frontmatter
     return {
       slug,
-      title: mod.title,
-      date: mod.date,
-      excerpt: mod.excerpt,
-      tags: mod.tags ?? [],
+      title: fm.title,
+      date: fm.date,
+      excerpt: fm.excerpt,
+      tags: fm.tags ?? [],
+      seoTitle: fm.seoTitle,
+      seoDescription: fm.seoDescription,
+      ogImage: fm.ogImage,
       Content: mod.default,
     }
   }

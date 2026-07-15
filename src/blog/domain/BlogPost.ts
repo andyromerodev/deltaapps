@@ -6,6 +6,9 @@ export interface BlogPost {
   date: string
   excerpt: string
   tags: string[]
+  seoTitle?: string
+  seoDescription?: string
+  ogImage?: string
 }
 
 export interface BlogPostWithContent extends BlogPost {

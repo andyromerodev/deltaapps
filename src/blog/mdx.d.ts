@@ -1,9 +1,14 @@
 declare module '*.mdx' {
   import type { ComponentType } from 'react'
-  export const title: string
-  export const date: string
-  export const excerpt: string
-  export const tags: string[]
+  export const frontmatter: {
+    title: string
+    date: string
+    excerpt: string
+    tags: string[]
+    seoTitle?: string
+    seoDescription?: string
+    ogImage?: string
+  }
   const MDXContent: ComponentType
   export default MDXContent
 }
