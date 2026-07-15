@@ -6,6 +6,8 @@ import { getBlogPosts } from '../application/getBlogPosts'
 import type { BlogPost } from '../domain/BlogPost'
 import { fadeUp } from '../../lib/animations'
 import BlogCard from './components/BlogCard'
+import Seo from '../../seo/Seo'
+import seoConfig from '../../seo/seo.config.json'
 
 const repo = new MdxBlogRepository()
 const POSTS_PER_PAGE = 6
@@ -27,6 +29,12 @@ export default function BlogPage() {
   const currentPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE)
 
   return (
+    <>
+      <Seo
+        title={seoConfig.pages.blog.title}
+        description={seoConfig.pages.blog.description}
+        canonical={`${seoConfig.site.siteUrl}/blog`}
+      />
     <main className="mx-auto max-w-6xl scroll-mt-16 px-6 py-32">
       <motion.div
         variants={fadeUp}
@@ -80,5 +88,6 @@ export default function BlogPage() {
         </>
       )}
     </main>
+    </>
   )
 }

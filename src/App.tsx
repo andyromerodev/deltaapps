@@ -14,6 +14,9 @@ import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'
 import BlogSection from './blog/ui/BlogSection'
 import BlogPage from './blog/ui/BlogPage'
 import BlogPostPage from './blog/ui/BlogPostPage'
+import Seo from './seo/Seo'
+import seoConfig from './seo/seo.config.json'
+import { organizationSchema } from './seo/jsonLd'
 
 function Layout() {
   return (
@@ -28,14 +31,22 @@ function Layout() {
 
 function LandingPage() {
   return (
-    <main>
-      <Hero />
-      <Marquee />
-      <Services />
-      <About />
-      <BlogSection />
-      <Contact />
-    </main>
+    <>
+      <Seo
+        title={seoConfig.pages.home.title}
+        description={seoConfig.pages.home.description}
+        canonical={seoConfig.site.siteUrl}
+        jsonLd={organizationSchema()}
+      />
+      <main>
+        <Hero />
+        <Marquee />
+        <Services />
+        <About />
+        <BlogSection />
+        <Contact />
+      </main>
+    </>
   )
 }
 

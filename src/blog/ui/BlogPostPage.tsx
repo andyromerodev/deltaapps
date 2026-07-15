@@ -6,6 +6,9 @@ import { MdxBlogRepository } from '../data/mdxBlogRepository'
 import { getBlogPost } from '../application/getBlogPost'
 import type { BlogPostWithContent } from '../domain/BlogPost'
 import { fadeSoft, fadeUp } from '../../lib/animations'
+import Seo from '../../seo/Seo'
+import seoConfig from '../../seo/seo.config.json'
+import { blogPostingSchema } from '../../seo/jsonLd'
 
 const repo = new MdxBlogRepository()
 
@@ -43,6 +46,15 @@ export default function BlogPostPage() {
   if (!post) return null
 
   return (
+    <>
+      <Seo
+        title={`${post.seoTitle ?? post.title} — ${seoConfig.site.siteName}`}
+        description={post.seoDescription ?? post.excerpt}
+        canonical={`${seoConfig.site.siteUrl}/blog/${post.slug}`}
+        ogImage={post.ogImage ?? `/og-posts/${post.slug}.png`}
+        ogType="article"
+        jsonLd={blogPostingSchema(post)}
+      />
     <main className="mx-auto max-w-3xl px-6 py-32">
       <motion.div variants={fadeUp} initial="hidden" animate="visible">
         <Link
@@ -81,5 +93,6 @@ export default function BlogPostPage() {
         <post.Content />
       </motion.div>
     </main>
+    </>
   )
 }
