@@ -1,0 +1,25 @@
+{
+  "site": {
+    "siteUrl": "https://deltaapps.pages.dev",
+    "siteName": "DeltaApps",
+    "twitterHandle": "@deltaapps",
+    "defaultOgImage": "/og-image.png",
+    "organization": {
+      "name": "DeltaApps",
+      "url": "https://deltaapps.pages.dev",
+      "logo": "https://deltaapps.pages.dev/favicon.svg",
+      "contactEmail": "contacto@deltaapps.com",
+      "sameAs": []
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "DeltaApps — Diseño, Marketing y Software",
+      "description": "DeltaApps — Diseño, marketing y desarrollo de software. Llevamos tu idea al siguiente nivel."
+    },
+    "blog": {
+      "title": "Blog — DeltaApps",
+      "description": "Ideas, tips y novedades sobre diseño, marketing digital y desarrollo de software."
+    }
+  }
+}
