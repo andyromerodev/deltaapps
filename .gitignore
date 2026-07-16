@@ -28,3 +28,6 @@ dist-ssr
 
 # Dev output
 output/
+
+# Claude memory files
+**/CLAUDE.md
