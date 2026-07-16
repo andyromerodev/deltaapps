@@ -11,6 +11,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton'
+import Works from './components/Works'
 import BlogSection from './blog/ui/BlogSection'
 import BlogPage from './blog/ui/BlogPage'
 import BlogPostPage from './blog/ui/BlogPostPage'
@@ -42,6 +43,7 @@ function LandingPage() {
         <Hero />
         <Marquee />
         <Services />
+        <Works />
         <About />
         <BlogSection />
         <Contact />

@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       services: 'Servicios',
       about: 'Nosotros',
+      works: 'Proyectos',
       contact: 'Contacto',
       blog: 'Blog',
       cta: 'Hablemos',
@@ -88,6 +89,39 @@ export const translations = {
         },
       ],
     },
+    works: {
+      title: 'Nuestros proyectos',
+      subtitle: 'Algunos de los trabajos que hemos construido para nuestros clientes.',
+      live: 'En vivo',
+      inProgress: 'En construcción',
+      visit: 'Visitar',
+      items: [
+        {
+          id: 'babynanday',
+          name: 'Baby Nanday',
+          category: 'E-commerce',
+          description: 'Catálogo digital pensado para madres y padres que compran desde el móvil. Artículos de cuidado, ropa y esenciales para bebés.',
+        },
+        {
+          id: 'erislaine',
+          name: 'Dra. Erislaine Tamayo',
+          category: 'Landing médica',
+          description: 'Sitio web para especialista en Otorrinolaringología en Tarapoto. Diseño clínico y presentación de servicios.',
+        },
+        {
+          id: 'doctorangel',
+          name: 'Dr. Angel Delgado',
+          category: 'Landing médica',
+          description: 'Plataforma web para especialista en Ginecología en Tarapoto. Información de consultas y contacto directo.',
+        },
+        {
+          id: 'alkilo',
+          name: 'ALKILO',
+          category: 'Marketplace',
+          description: 'Plataforma de tienditas online con múltiples categorías: deportes, tecnología, regalos y más.',
+        },
+      ],
+    },
     about: {
       title: 'Sobre nosotros',
       text: 'DeltaApps nace de la convicción de que las pequeñas y medianas empresas merecen diseño, marketing y tecnología de primer nivel. Combinamos creatividad y código para entregar soluciones completas, sin intermediarios y a tu medida.',
@@ -118,6 +152,7 @@ export const translations = {
     nav: {
       services: 'Services',
       about: 'About',
+      works: 'Projects',
       contact: 'Contact',
       blog: 'Blog',
       cta: "Let's talk",
@@ -199,6 +234,39 @@ export const translations = {
           title: 'E-commerce & CRO',
           description:
             'Online store development and experience optimization to maximize your sales and conversions.',
+        },
+      ],
+    },
+    works: {
+      title: 'Our projects',
+      subtitle: 'Some of the work we have built for our clients.',
+      live: 'Live',
+      inProgress: 'In progress',
+      visit: 'Visit',
+      items: [
+        {
+          id: 'babynanday',
+          name: 'Baby Nanday',
+          category: 'E-commerce',
+          description: 'Digital catalog designed for parents who shop from mobile. Baby care items, clothing, and essentials.',
+        },
+        {
+          id: 'erislaine',
+          name: 'Dra. Erislaine Tamayo',
+          category: 'Medical landing',
+          description: 'Website for an ENT specialist in Tarapoto. Clinical design and service presentation.',
+        },
+        {
+          id: 'doctorangel',
+          name: 'Dr. Angel Delgado',
+          category: 'Medical landing',
+          description: 'Web platform for a Gynecology specialist in Tarapoto. Consultation info and direct contact.',
+        },
+        {
+          id: 'alkilo',
+          name: 'ALKILO',
+          category: 'Marketplace',
+          description: 'Multi-category online shopping platform: sports, tech, gifts, and more.',
         },
       ],
     },
